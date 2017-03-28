@@ -1,0 +1,804 @@
+fileFormatVersion: 2
+guid: ce26e6b97bec44f7ba167d04f902d043
+timeCreated: 1490054151
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: GoldBricks_0
+    21300002: GoldBricks_1
+    21300004: GoldBricks_2
+    21300006: GoldBricks_3
+    21300008: GoldBricks_4
+    21300010: GoldBricks_5
+    21300012: GoldBricks_6
+    21300014: GoldBricks_7
+    21300016: GoldBricks_8
+    21300018: GoldBricks_9
+    21300020: GoldBricks_10
+    21300022: GoldBricks_11
+    21300024: GoldBricks_12
+    21300026: GoldBricks_13
+    21300028: GoldBricks_14
+    21300030: GoldBricks_15
+    21300032: GoldBricks_16
+    21300034: GoldBricks_17
+    21300036: GoldBricks_18
+    21300038: GoldBricks_19
+    21300040: GoldBricks_20
+    21300042: GoldBricks_21
+    21300044: GoldBricks_22
+    21300046: GoldBricks_23
+    21300048: GoldBricks_24
+    21300050: GoldBricks_25
+    21300052: GoldBricks_26
+    21300054: GoldBricks_27
+    21300056: GoldBricks_28
+    21300058: GoldBricks_29
+    21300060: GoldBricks_30
+    21300062: GoldBricks_31
+    21300064: GoldBricks_32
+    21300066: GoldBricks_33
+    21300068: GoldBricks_34
+    21300070: GoldBricks_35
+    21300072: GoldBricks_36
+    21300074: GoldBricks_37
+    21300076: GoldBricks_38
+    21300078: GoldBricks_39
+    21300080: GoldBricks_40
+    21300082: GoldBricks_41
+    21300084: GoldBricks_42
+    21300086: GoldBricks_43
+    21300088: GoldBricks_44
+    21300090: GoldBricks_45
+    21300092: GoldBricks_46
+    21300094: GoldBricks_47
+    21300096: GoldBricks_48
+    21300098: GoldBricks_49
+    21300100: GoldBricks_50
+    21300102: GoldBricks_51
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GoldBricks_0
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 487
+        width: 64
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 446
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 421
+        width: 64
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_3
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 446
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 446
+        width: 64
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 446
+        width: 64
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_6
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 446
+        width: 64
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_7
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 437
+        width: 19
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_8
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 446
+        width: 7
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_9
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 438
+        width: 26
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_10
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 434
+        width: 64
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_11
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 434
+        width: 64
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_12
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 440
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_13
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 440
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_14
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 439
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_15
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 380
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_16
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 355
+        width: 126
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_17
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 314
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_18
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 314
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_19
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 314
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_20
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 314
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_21
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 314
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_22
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 314
+        width: 43
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_23
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 314
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_24
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 289
+        width: 77
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_25
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 248
+        width: 64
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_26
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 248
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_27
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 248
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_28
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 248
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_29
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 248
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_30
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 248
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_31
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 226
+        width: 64
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_32
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 182
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_33
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 182
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_34
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 182
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_35
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 182
+        width: 64
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_36
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 176
+        width: 20
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_37
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 164
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_38
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 116
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_39
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 116
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_40
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 116
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_41
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 116
+        width: 64
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_42
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 50
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_43
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 50
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_44
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 104
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_45
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 110
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_46
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 109
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_47
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 109
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_48
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 109
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_49
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 110
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_50
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 109
+        width: 4
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GoldBricks_51
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 50
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
