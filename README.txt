@@ -1,3 +1,3 @@
 2D-Game
 
-Simple, personal project
+Personal project that I started over my Spring break of 2017.
