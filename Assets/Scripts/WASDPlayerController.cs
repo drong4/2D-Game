@@ -14,7 +14,7 @@ public class WASDPlayerController : MonoBehaviour {
     private Vector2 maxWalkPoint;
     private bool hasWalkZone;
 
-
+	[Header("Jumping")] 
     private bool isGrounded;
 	//Variables for jumping
 	public float jumpForce;
@@ -25,16 +25,21 @@ public class WASDPlayerController : MonoBehaviour {
 	//for double jump
 	private bool canDoubleJump;
 
+	[Space]
+
     private bool canMove;
 
     private Animator anim;
     private Rigidbody2D myRigidBody;
 
     private bool playerIsMoving;
-    public Vector2 lastMove;
+    private Vector2 lastMove;
 
     private static bool playerExists;
 
+
+
+	[Header("Attack")]
     //Variables for attacking
     private static bool isAttacking;
     public float attack1Time;
@@ -42,6 +47,19 @@ public class WASDPlayerController : MonoBehaviour {
 	public float aerialAttackTime;
     private float attackTimeCounter;
 
+	[Space]
+
+	[Header("Projectiles")]
+	//Variables for firing projectiles
+	public Transform firingPoint;
+	public GameObject projectile;
+	public float firingDelay;//Delay between shots
+	private float firingDelayCounter;
+	private bool canFire;
+
+	[Space]
+
+	[Header("Rolling Variables")]
 	//Variables for rolling
 	public float rollSpeed;
 	private static  bool isRolling;
@@ -50,6 +68,9 @@ public class WASDPlayerController : MonoBehaviour {
 
 	private float origGravityScale;//to restore after rolling in air
 
+	[Space]
+
+	[Header("Audio")]
 	//variables for audio clips
 	public AudioClip attack1Sound;
 	public AudioClip attack2Sound;
@@ -57,7 +78,12 @@ public class WASDPlayerController : MonoBehaviour {
 	public AudioClip counterAttackSound;
 	public AudioClip counterStanceSound;
 	public AudioClip aerialAttackSound;
+	public AudioClip firingSound;
+	private AudioSource audiosource;
 
+	[Space]
+
+	[Header("Counter")]
 	//variables for countering
 	public float counterTime;//time stuck in counter animation
 	private float counterTimeCounter;
@@ -72,6 +98,10 @@ public class WASDPlayerController : MonoBehaviour {
 
 
 
+	[Space]
+
+
+	[Header("Knockback")]
 	//variables for knockback animation
 	private bool isKnockedBack;//lets the objects that hit us alter this
 	public float knockbackTime;
@@ -87,6 +117,9 @@ public class WASDPlayerController : MonoBehaviour {
 //		Debug.Log ("WASDPlayerController's isKnockedBack set to " + val.ToString());
 	}
 
+	[Space]
+
+	[Header("I - Frames")]
 	public bool isInvulnerable;//let the thing attacking us check this value
 	public float rollIFrames;
 
@@ -94,6 +127,7 @@ public class WASDPlayerController : MonoBehaviour {
 	void Start () {
         anim = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
+		audiosource = GetComponent<AudioSource> ();
 
 //        //Deals with duplicates of the player when any scene loading happens
 //         if (!playerExists)
@@ -112,6 +146,7 @@ public class WASDPlayerController : MonoBehaviour {
 		isAttacking = false;
 		isKnockedBack = false;
 		isInvulnerable = false;
+		canFire = true;
 
 		knockbackTimeCounter = -1;
 
@@ -135,6 +170,18 @@ public class WASDPlayerController : MonoBehaviour {
 	void Update () {
 		
         playerIsMoving = false;
+
+		//Check if we can fire
+		if (!canFire) {
+			//if we can't, then count down
+			if (firingDelayCounter < 0) {
+				canFire = true;
+			} 
+			else {
+				firingDelayCounter -= Time.deltaTime;
+			}
+		}
+
 
 		//Check if we're in contact with ground.
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
@@ -299,14 +346,14 @@ public class WASDPlayerController : MonoBehaviour {
         {
 			if (!hasWalkZone || (hasWalkZone && transform.position.y >= minWalkPoint.y))
             {
-				if (Input.GetKey (KeyCode.K)) {
-					//perform counter if Down + Roll
-					isCountering = true;
-					anim.SetBool ("Is_Countering", true);
-					counterTimeCounterMax = counterTime;
-					counterTimeCounter = counterTime;
-					return;//don't do anything else
-				}
+//				if (Input.GetKey (KeyCode.K)) {
+//					//perform counter if Down + Roll
+//					isCountering = true;
+//					anim.SetBool ("Is_Countering", true);
+//					counterTimeCounterMax = counterTime;
+//					counterTimeCounter = counterTime;
+//					return;//don't do anything else
+//				}
             }
         }
         //Right
@@ -350,6 +397,18 @@ public class WASDPlayerController : MonoBehaviour {
 
 			isAttacking = true;
         }
+
+		//Shoot
+		if (Input.GetKeyDown (KeyCode.L) && canFire) {
+			var obj = Instantiate (projectile, firingPoint.position, firingPoint.rotation);
+			//orient the projectile towards the direction player is facing
+			obj.transform.localScale = transform.localScale;
+
+			playFiringSound ();
+
+			canFire = false;
+			firingDelayCounter = firingDelay;
+		}
 
 		//Roll(set as K)
 		if (Input.GetKeyDown (KeyCode.K)) {
@@ -405,35 +464,33 @@ public class WASDPlayerController : MonoBehaviour {
 	//				-Can play sound on specific frame in animation
 	void playAttack1Sound()
 	{
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 1f;//reset pitch to original
 		audiosource.PlayOneShot (attack1Sound, 0.5f);
 	}
 	void playAttack2Sound()
 	{
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 1f;//reset pitch to original
 		audiosource.PlayOneShot (attack2Sound, 0.5f);
 	}
 	void playDashSound(){
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 1f;//reset pitch to original
 		audiosource.PlayOneShot (dashSound, 0.5f);
 	}
 	void playCounterAttackSound(){
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 2f;
 		audiosource.PlayOneShot (counterAttackSound);
 
 	}
 	void playCounterStanceSound(){
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 1f;
 		audiosource.PlayOneShot (counterStanceSound, 1f);
 	}
 	void playAerialAttackSound(){
-		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.pitch = 0.75f;
 		audiosource.PlayOneShot (aerialAttackSound);
+	}
+	void playFiringSound(){
+		audiosource.pitch = 0.75f;
+		audiosource.PlayOneShot (firingSound, 0.5f);
 	}
 }
