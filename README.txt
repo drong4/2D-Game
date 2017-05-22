@@ -2,7 +2,7 @@
 2D-Sidescroller Fighting Game
 Personal project that I started over my Spring break of 2017.
 
-Short gameplay demo: https://youtu.be/7oLLbf5Gze4
+Short gameplay demo: https://www.youtube.com/watch?v=2qyK7hifKzw&feature=youtu.be
 
 All character art/animations are made by us.
 
