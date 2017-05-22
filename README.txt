@@ -1,5 +1,5 @@
 
-2D-Game
+2D-Sidescroller Fighting Game
 Personal project that I started over my Spring break of 2017.
 
 Short gameplay demo: https://youtu.be/7oLLbf5Gze4
