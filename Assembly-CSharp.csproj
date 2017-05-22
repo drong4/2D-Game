@@ -60,11 +60,13 @@
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\HealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
+     <Compile Include="Assets\Scripts\ProjectileStraight.cs" />
      <Compile Include="Assets\Scripts\RestartGame.cs" />
      <Compile Include="Assets\Scripts\Utilities\CameraUtilities.cs" />
      <Compile Include="Assets\Scripts\WASDPlayerController.cs" />
      <Compile Include="Assets\Scripts\WalkZoneToCameraSize.cs" />
      <Compile Include="Assets\Scripts\WeaponAttack.cs" />
+     <Compile Include="Assets\Scripts\WhipEnemyController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

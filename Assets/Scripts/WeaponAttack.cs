@@ -64,14 +64,14 @@ public class WeaponAttack : MonoBehaviour {
 			rigidForForce.velocity = newVelocity;
 		}
 
-		if (transform.parent.transform.parent.tag == "Player") {
-			//If we are a player and we hit our target, shake the screen
+//		if (transform.parent.transform.parent.tag == "Player") {
+//			//If we are a player and we hit our target, shake the screen
 
 			/*ShakeOnce(magnitude, roughness, fadein time, fadeout time)
 			magnitude= intensity
 			roughness= lower is smooth, slow ; higher is rough, fast*/
 
 			CameraShaker.Instance.ShakeOnce(knockbackAmount*2, knockbackAmount, 0, 0.1f);
-		}
+//		}
 	}
 }

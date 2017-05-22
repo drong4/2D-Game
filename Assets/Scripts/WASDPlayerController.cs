@@ -4,6 +4,7 @@ using System.Collections;
 /* WASD 
  * J-attack
  * K-roll
+ * L-shoot
  * Space-jump*/
 public class WASDPlayerController : MonoBehaviour {
     public float moveSpeed;
@@ -346,14 +347,14 @@ public class WASDPlayerController : MonoBehaviour {
         {
 			if (!hasWalkZone || (hasWalkZone && transform.position.y >= minWalkPoint.y))
             {
-//				if (Input.GetKey (KeyCode.K)) {
-//					//perform counter if Down + Roll
-//					isCountering = true;
-//					anim.SetBool ("Is_Countering", true);
-//					counterTimeCounterMax = counterTime;
-//					counterTimeCounter = counterTime;
-//					return;//don't do anything else
-//				}
+				if (Input.GetKey (KeyCode.K)) {
+					//perform counter if Down + Roll
+					isCountering = true;
+					anim.SetBool ("Is_Countering", true);
+					counterTimeCounterMax = counterTime;
+					counterTimeCounter = counterTime;
+					return;//don't do anything else
+				}
             }
         }
         //Right
@@ -491,6 +492,6 @@ public class WASDPlayerController : MonoBehaviour {
 	}
 	void playFiringSound(){
 		audiosource.pitch = 0.75f;
-		audiosource.PlayOneShot (firingSound, 0.5f);
+		audiosource.PlayOneShot (firingSound, 0.3f);
 	}
 }

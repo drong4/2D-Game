@@ -1,0 +1,356 @@
+fileFormatVersion: 2
+guid: 31ff1d6b8d6b74e1aa708f899c10a76c
+timeCreated: 1494997472
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: whip_enemy_0
+    21300002: whip_enemy_1
+    21300004: whip_enemy_2
+    21300006: whip_enemy_3
+    21300008: whip_enemy_4
+    21300010: whip_enemy_5
+    21300012: whip_enemy_6
+    21300014: whip_enemy_7
+    21300016: whip_enemy_8
+    21300018: whip_enemy_9
+    21300020: whip_enemy_10
+    21300022: whip_enemy_11
+    21300024: whip_enemy_12
+    21300026: whip_enemy_13
+    21300028: whip_enemy_14
+    21300030: whip_enemy_15
+    21300032: whip_enemy_18
+    21300034: whip_enemy_20
+    21300036: whip_enemy_22
+    21300038: whip_enemy_23
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 64
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: whip_enemy_0
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 549
+        width: 18
+        height: 15
+      alignment: 9
+      pivot: {x: 0.6717832, y: 0.36257732}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_1
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 549
+        width: 16
+        height: 14
+      alignment: 9
+      pivot: {x: 0.7093611, y: 0.37116787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_2
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 548
+        width: 17
+        height: 15
+      alignment: 9
+      pivot: {x: 0.7576743, y: 0.46564534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_3
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 547
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_4
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 424
+        width: 24
+        height: 19
+      alignment: 9
+      pivot: {x: 0.832829, y: 0.35082206}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_5
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 425
+        width: 38
+        height: 38
+      alignment: 9
+      pivot: {x: 0.12027098, y: 0.16095693}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_6
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 424
+        width: 40
+        height: 10
+      alignment: 9
+      pivot: {x: 0.094164275, y: 0.396933}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_7
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 424
+        width: 37
+        height: 12
+      alignment: 9
+      pivot: {x: 0.10304384, y: 0.43558502}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_8
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 296
+        width: 37
+        height: 12
+      alignment: 9
+      pivot: {x: 0.13561311, y: 0.41188303}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_9
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 295
+        width: 34
+        height: 14
+      alignment: 9
+      pivot: {x: 0.15011282, y: 0.42447117}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_10
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 296
+        width: 30
+        height: 13
+      alignment: 9
+      pivot: {x: 0.18005982, y: 0.38641122}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_11
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 295
+        width: 27
+        height: 15
+      alignment: 9
+      pivot: {x: 0.1578516, y: 0.47200724}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_12
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 166
+        width: 32
+        height: 16
+      alignment: 9
+      pivot: {x: 0.25067866, y: 0.44751167}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_13
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 161
+        width: 28
+        height: 20
+      alignment: 9
+      pivot: {x: 0.45100132, y: 0.4542679}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_14
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 162
+        width: 58
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5078851, y: 0.24847373}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_15
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 164
+        width: 42
+        height: 26
+      alignment: 9
+      pivot: {x: 0.815769, y: 0.2889287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_18
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 37
+        width: 44
+        height: 17
+      alignment: 9
+      pivot: {x: 0.8429907, y: 0.39239413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_20
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 37
+        width: 41
+        height: 17
+      alignment: 9
+      pivot: {x: 0.8569336, y: 0.39239413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_22
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 35
+        width: 44
+        height: 19
+      alignment: 9
+      pivot: {x: 0.85338455, y: 0.4277908}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: whip_enemy_23
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 36
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -117,6 +117,7 @@ public class EnemyController : MonoBehaviour {
 
 			float rand = Random.Range (0f, 100f);
 			bool canAttack = rand < probOfAttack;
+			isAlerted = Mathf.Abs (xDist) <= alertRange;
 
 			//if we are close enough to attack...
 			if (Mathf.Abs(xDist) <= attackRange) {
@@ -140,7 +141,6 @@ public class EnemyController : MonoBehaviour {
 			}
 			//else, set velocity to move towards trackingTarget's position
 			else {
-				isAlerted = Mathf.Abs (xDist) <= alertRange;
 				if (isAlerted && isGrounded) {
 					//scale xDist, yDist by moveSpeed/euclideanDist to get a net force of moveSpeed in the right direction
 					myRigidBody.velocity = new Vector2 (dir * moveSpeed, 0f);
