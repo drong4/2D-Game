@@ -50,11 +50,18 @@ public class WeaponAttack : MonoBehaviour {
 			//Try to apply damage (target could be invulnerable)
 			targetObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damageApplied);
 
+			if (targetObject.tag == "Player") {
+				if (targetObject.GetComponentInParent<WASDPlayerController>().isInvulnerable ||
+				    targetObject.GetComponentInParent<WASDPlayerController> ().getValidCounterStatus ()) {
+					return; //Don't apply knockback
+				}
+			}
+
 			//Grab our collided with objects rigibody and apply velocity
-			Rigidbody2D rigidForForce = other.gameObject.GetComponentInParent<Rigidbody2D>();
+			Rigidbody2D rigidForForce = other.gameObject.GetComponentInParent<Rigidbody2D> ();
 			//calculate the velocity to apply
-			Vector2 newVelocity = new Vector2(xForce * knockbackAmount/rigidForForce.mass,
-												yForce * knockbackAmount/rigidForForce.mass); 
+			Vector2 newVelocity = new Vector2 (xForce * knockbackAmount / rigidForForce.mass,
+				                     yForce * knockbackAmount / rigidForForce.mass); 
 			rigidForForce.velocity = newVelocity;
 		}
 
@@ -65,7 +72,7 @@ public class WeaponAttack : MonoBehaviour {
 			magnitude= intensity
 			roughness= lower is smooth, slow ; higher is rough, fast*/
 
-			CameraShaker.Instance.ShakeOnce(knockbackAmount*2, knockbackAmount, 0, 0.1f);
+			//CameraShaker.Instance.ShakeOnce(knockbackAmount*2, knockbackAmount, 0, 0.1f);
 //		}
 	}
 }
