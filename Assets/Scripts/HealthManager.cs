@@ -4,10 +4,14 @@ using UnityEngine.UI;//access to UI
 
 public class HealthManager : MonoBehaviour {
 
+	[Header("Health/DamageFX")]
 	public int maxHealth;
 	public int currentHealth;
 	public GameObject damageFX;//particles produced when damaged
 
+	[Space]
+
+	[Header("Player only variables")]
 //--ONLY FOR PLAYER---------------------------------------------------------
 	//HUD variables
 	public Slider healthSlider;
@@ -105,10 +109,8 @@ public class HealthManager : MonoBehaviour {
 //			//will give enemy flinch
 //			this.GetComponent<EnemyController> ().setKnockBack (true);
 //		}
-
 		currentHealth -= damageReceived;
-		GameObject generatedFX = Instantiate (damageFX, transform.position, transform.rotation);
-		Destroy (generatedFX, generatedFX.GetComponent<ParticleSystem> ().duration);
-		//Debug.Log(gameObject.name.ToString() + " got hit!");
+		GameObject generatedFX = Instantiate (damageFX, transform.position, transform.rotation);//blood particles
+		Destroy (generatedFX, generatedFX.GetComponent<ParticleSystem> ().duration);//destroy blood particles after some time
 	}
 }

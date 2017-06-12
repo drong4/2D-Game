@@ -28,10 +28,14 @@ public class ProjectileStraight : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.tag != "Player") {
-			if (other.tag == targetTag) {
-				other.gameObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damage);
-			}
+		if (other.tag == targetTag && other.name == "Hitbox") {
+			//Hit target!
+			other.gameObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damage);
+			Destroy (gameObject);
+		}
+		
+		if (other.tag == "Ground") {
+			//Hit terrain
 			Destroy (gameObject);
 		}
 	}

@@ -18,12 +18,13 @@ public class BossAlert : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (gameObject.name == "BossEnemy") {
-			isAlerted = GetComponent<EnemyController> ().isAlerted;
-		} 
-		else if (gameObject.name == "BossWhipEnemy") {
-			isAlerted = GetComponent<WhipEnemyController> ().isAlerted;
-		} 
+//		if (gameObject.name == "BossEnemy") {
+//			isAlerted = GetComponent<EnemyController> ().isAlerted;
+//		} 
+//		else if (gameObject.name == "BossWhipEnemy") {
+//			isAlerted = GetComponent<WhipEnemyController> ().isAlerted;
+//		} 
+		isAlerted = GetComponent<EnemyInformation>().isAlerted;
 
 		if (!bossIsActive && isAlerted) {
 			bossIsActive = true;

@@ -20,6 +20,8 @@ public class CameraController : MonoBehaviour {
 
     private float tar1X;
     private float tar1Y;
+	private float tar1Z;
+
     private float tar2X;
     private float tar2Y;
 
@@ -46,15 +48,17 @@ public class CameraController : MonoBehaviour {
         //The following code determines the camera's start position
         tar1X = followTarget1.transform.position.x;
         tar1Y = followTarget1.transform.position.y;
-		transform.position = new Vector3(tar1X, tar1Y, transform.position.z);
+		tar1Z = followTarget1.transform.position.z;
+		transform.position = new Vector3(tar1X, tar1Y, tar1Z - 10f);
     }
 
     // Update is called once per frame
     void Update () {
         tar1X = followTarget1.transform.position.x;
         tar1Y = followTarget1.transform.position.y;
+		tar1Z = followTarget1.transform.position.z;
 
-        desiredPos = new Vector3(tar1X, tar1Y+1, transform.position.z);//Camera's z-position stays the same
+		desiredPos = new Vector3(tar1X, tar1Y+1, tar1Z - 10f);//Camera's z-position stays the same
 
         transform.position = Vector3.Lerp(transform.position, desiredPos, moveSpeed * Time.deltaTime);//Move camera
     }

@@ -4,7 +4,6 @@ using System.Collections;
 /*Follows trackingTarget relentlessly, attacking when in range*/
 public class EnemyController : MonoBehaviour {
 
-	public GameObject trackingTarget;
 	public float moveSpeed;
 	private Animator anim;
 	private Rigidbody2D myRigidBody;
@@ -14,8 +13,6 @@ public class EnemyController : MonoBehaviour {
 	private Vector2 targetPosition;
 	private Vector2 ourPosition;
 	public float attackRange;
-	public float alertRange;
-	public bool isAlerted;
 	private float xDist;
 	private float yDist;
 	//variables for attacking animation
@@ -59,7 +56,7 @@ public class EnemyController : MonoBehaviour {
 		isGrounded = false;
 		isAttacking = false;
 		isKnockedBack = false;
-		isAlerted = false;
+		//isAlerted = false;
 
 		knockbackTimeCounter = -1;
 	}
@@ -106,55 +103,57 @@ public class EnemyController : MonoBehaviour {
 			}
 		}
 		else{
-			//calculate dist from trackingTarget
-			targetPosition = trackingTarget.transform.position;
-			ourPosition = transform.position;
+			//If something with a "Player" tag is within our AlertRange...
+			if (this.GetComponent<EnemyInformation> ().isAlerted) {
+				//calculate dist from trackingTarget
+				targetPosition = GetComponent<EnemyInformation> ().trackingTarget.transform.position;
+				ourPosition = transform.position;
 
-			xDist = targetPosition.x - ourPosition.x;//(-) if we need to go left, (+) if we need to go right
-			//yDist = targetPosition.y - ourPosition.y;
+				xDist = targetPosition.x - ourPosition.x;//(-) if we need to go left, (+) if we need to go right
+				//yDist = targetPosition.y - ourPosition.y;
 
-			float dir = xDist / Mathf.Abs (xDist);//-1 go left, +1 go right
+				float dir = xDist / Mathf.Abs (xDist);//-1 go left, +1 go right
 
-			float rand = Random.Range (0f, 100f);
-			bool canAttack = rand < probOfAttack;
-			isAlerted = Mathf.Abs (xDist) <= alertRange;
+				float rand = Random.Range (0f, 100f);
+				bool canAttack = rand < probOfAttack;
 
-			//if we are close enough to attack...
-			if (Mathf.Abs(xDist) <= attackRange) {
-				//check if we should attack this frame
-				if (canAttack) {
-					isAttacking = true;
-					//stop moving
-					myRigidBody.velocity = Vector2.zero;
-					anim.SetBool ("Attack_1", true);
-					attackTimeCounter = Random.Range (minAttackDelay, maxAttackDelay);
+				//if we are close enough to attack...
+				if (Mathf.Abs (xDist) <= attackRange) {
+					//check if we should attack this frame
+					if (canAttack) {
+						isAttacking = true;
+						//stop moving
+						myRigidBody.velocity = Vector2.zero;
+						anim.SetBool ("Attack_1", true);
+						attackTimeCounter = Random.Range (minAttackDelay, maxAttackDelay);
 
-					//turn around if necessary
-					Vector3 newScale = transform.localScale;
-					if (xDist < 0)
-						newScale.x = -Mathf.Abs(newScale.x);
-					else {
-						newScale.x = Mathf.Abs(newScale.x);
+						//turn around if necessary
+						Vector3 newScale = transform.localScale;
+						if (xDist < 0)
+							newScale.x = -Mathf.Abs (newScale.x);
+						else {
+							newScale.x = Mathf.Abs (newScale.x);
+						}
+						transform.localScale = newScale;
 					}
-					transform.localScale = newScale;
 				}
-			}
-			//else, set velocity to move towards trackingTarget's position
-			else {
-				if (isAlerted && isGrounded) {
-					//scale xDist, yDist by moveSpeed/euclideanDist to get a net force of moveSpeed in the right direction
-					myRigidBody.velocity = new Vector2 (dir * moveSpeed, 0f);
+				//else, set velocity to move towards trackingTarget's position
+				else {
+					if (isGrounded) {
+						//scale xDist, yDist by moveSpeed/euclideanDist to get a net force of moveSpeed in the right direction
+						myRigidBody.velocity = new Vector2 (dir * moveSpeed, myRigidBody.velocity.y);
 
-					//turn around if necessary
-					Vector3 newScale = transform.localScale;
-					if (xDist < 0)
-						newScale.x = -Mathf.Abs(newScale.x);
-					else {
-						newScale.x = Mathf.Abs(newScale.x);
+						//turn around if necessary
+						Vector3 newScale = transform.localScale;
+						if (xDist < 0)
+							newScale.x = -Mathf.Abs (newScale.x);
+						else {
+							newScale.x = Mathf.Abs (newScale.x);
+						}
+						transform.localScale = newScale;
+
+						isMoving = true;
 					}
-					transform.localScale = newScale;
-
-					isMoving = true;
 				}
 			}
 		}
@@ -177,4 +176,10 @@ public class EnemyController : MonoBehaviour {
 		AudioSource audiosource = GetComponent<AudioSource> ();
 		audiosource.PlayOneShot (attack1Sound, 0.25f);
 	}
+
+	//Function to walk towards a target that's within our AlertRange collider
+	void trackTarget(){
+	
+	}
+
 }

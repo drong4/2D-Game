@@ -9,7 +9,7 @@ using System.Collections;
 public class WASDPlayerController : MonoBehaviour {
     public float moveSpeed;
 
-    //Constrain movement to walkzone
+	//Constrain movement to walkzone
     public Collider2D walkZone;
     private Vector2 minWalkPoint;
     private Vector2 maxWalkPoint;
@@ -126,6 +126,13 @@ public class WASDPlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		float tar1X = this.transform.position.x;
+		float tar1Y = this.transform.position.y;
+		float tar1Z = this.transform.position.z;
+		Camera.main.transform.position = new Vector3 (tar1X, tar1Y, tar1Z-10f);
+
+
         anim = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
 		audiosource = GetComponent<AudioSource> ();
@@ -169,7 +176,14 @@ public class WASDPlayerController : MonoBehaviour {
 	
 	// FixedUpdate is called after certain amount of time, while Update is called once per frame (variable time)
 	void Update () {
-		
+
+		//Keep camera on player
+		float tar1X = this.transform.position.x;
+		float tar1Y = this.transform.position.y;
+		float tar1Z = this.transform.position.z;
+		Vector3 desiredPos = new Vector3(tar1X, tar1Y+1, tar1Z - 10f);
+		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, desiredPos, moveSpeed * Time.deltaTime);//Move camera
+
         playerIsMoving = false;
 
 		//Check if we can fire

@@ -20,7 +20,7 @@ public class WeaponAttack : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if (other.gameObject.tag == targetTag) {
+		if (other.gameObject.tag == targetTag && other.name == "Hitbox") {
 			GameObject targetObject = other.gameObject;
 
 			//Store the vector 2 of the location where the initial hit happened 
@@ -49,12 +49,6 @@ public class WeaponAttack : MonoBehaviour {
 
 			//Try to apply damage (target could be invulnerable)
 			targetObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damageApplied);
-		
-			if (targetObject.tag == "Player") {
-				if(targetObject.GetComponentInParent<WASDPlayerController> ().isInvulnerable 
-					|| targetObject.GetComponentInParent<WASDPlayerController> ().getValidCounterStatus())
-					return;//don't apply knockback
-			}
 
 			//Grab our collided with objects rigibody and apply velocity
 			Rigidbody2D rigidForForce = other.gameObject.GetComponentInParent<Rigidbody2D>();
