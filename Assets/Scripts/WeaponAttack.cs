@@ -48,6 +48,7 @@ public class WeaponAttack : MonoBehaviour {
 				yForce = 0;
 
 			//Try to apply damage (target could be invulnerable)
+			//Vector3 pointOfContact = new Vector3(initialHitPoint.x, initialHitPoint.y, transform.position.z);
 			targetObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damageApplied);
 
 			if (targetObject.tag == "Player") {

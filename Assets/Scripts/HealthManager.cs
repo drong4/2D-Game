@@ -100,7 +100,7 @@ public class HealthManager : MonoBehaviour {
 		}
 	}
 
-	public void ReceiveDamage(int damageReceived){
+	public void ReceiveDamage(int damageReceived/*, Vector3 pointOfContact*/){
 		if (transform.tag == "Player") {
 			if (this.GetComponent<WASDPlayerController> ().isInvulnerable) {
 				//if this is a player and invulnerable, don't take damage
@@ -123,7 +123,15 @@ public class HealthManager : MonoBehaviour {
 			isFullHp = false;//no longer full hp
 		}
 		currentHealth -= damageReceived;
-		GameObject generatedFX = Instantiate (damageFX, transform.position, transform.rotation);//blood particles
+
+		//generate blood particles
+		GameObject generatedFX;
+//		if (pointOfContact != null) {
+//			generatedFX = Instantiate (damageFX, pointOfContact, transform.rotation);//blood particles
+//		} 
+//		else {
+			generatedFX = Instantiate (damageFX, transform.position, transform.rotation);
+//		}
 		Destroy (generatedFX, generatedFX.GetComponent<ParticleSystem> ().duration);//destroy blood particles after some time
 	}
 }

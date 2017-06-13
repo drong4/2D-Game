@@ -5,7 +5,8 @@ using System.Collections;
  * J-attack
  * K-roll
  * L-shoot
- * Space-jump*/
+ * Space-jump
+ * S+K - counter*/
 public class WASDPlayerController : MonoBehaviour {
     public float moveSpeed;
 
@@ -43,10 +44,6 @@ public class WASDPlayerController : MonoBehaviour {
 	[Header("Attack")]
     //Variables for attacking
     private static bool isAttacking;
-    public float attack1Time;
-	public float attack2Time;
-	public float aerialAttackTime;
-    private float attackTimeCounter;
 
 	[Space]
 
@@ -66,6 +63,9 @@ public class WASDPlayerController : MonoBehaviour {
 	private static  bool isRolling;
 	public float rollTime;
 	private float rollTimeCounter;
+	public float rollCoolDown;
+	private float rollCoolDownCounter;
+	private bool canRoll;
 
 	private float origGravityScale;//to restore after rolling in air
 
@@ -75,6 +75,8 @@ public class WASDPlayerController : MonoBehaviour {
 	//variables for audio clips
 	public AudioClip attack1Sound;
 	public AudioClip attack2Sound;
+	public AudioClip attack3_1Sound;
+	public AudioClip attack3_2Sound;
 	public AudioClip dashSound;
 	public AudioClip counterAttackSound;
 	public AudioClip counterStanceSound;
@@ -155,6 +157,7 @@ public class WASDPlayerController : MonoBehaviour {
 		isKnockedBack = false;
 		isInvulnerable = false;
 		canFire = true;
+		canRoll = true;
 
 		knockbackTimeCounter = -1;
 
@@ -205,6 +208,17 @@ public class WASDPlayerController : MonoBehaviour {
 			canDoubleJump = true;
 		}
 		isJumping = !isGrounded;
+
+		if (!canRoll) {
+			if (rollCoolDownCounter <= 0f) {
+				//if roll cooldown is over
+				canRoll = true;
+			} 
+			else {
+				//update the cooldown
+				rollCoolDownCounter -= Time.deltaTime;
+			}
+		}
 
 //		Debug.Log ("isKnockedBack: " + isKnockedBack.ToString ());
 
@@ -261,13 +275,10 @@ public class WASDPlayerController : MonoBehaviour {
 			float timePassed = rollTime - rollTimeCounter;
 			isInvulnerable = timePassed <= rollIFrames;
 
-//			Debug.Log ("rollTime - rollTimeCounter: " + timePassed.ToString() + ", rollIFrames: " + rollIFrames.ToString ());
-//			Debug.Log ("isInvulnerable: " + isInvulnerable.ToString ());
-//
 			if (rollTimeCounter > 0f) {
 				rollTimeCounter -= Time.deltaTime;
 
-				if(isJumping)
+				if (isJumping) 
 					transform.Translate (new Vector3 (lastMove.x * (rollSpeed * 1.5f) * Time.deltaTime, 0f, 0f));
 				else
 					transform.Translate (new Vector3 (lastMove.x * rollSpeed * Time.deltaTime, 0f, 0f));
@@ -282,36 +293,38 @@ public class WASDPlayerController : MonoBehaviour {
 			}
 		}
         //Attack lag
-		else if(isAttacking)
-         {
-             if (attackTimeCounter > 0f)
-             {
-				if (Input.GetKeyDown(KeyCode.J) 
-					&& anim.GetBool("Attack_2") == false 
-					&& anim.GetBool("Attack_1") == true) {
+		else if(isAttacking){
+			if (anim.GetBool ("Aerial_Attack") && isJumping) {
+				Movement ();//allow for movement if aerial attacking, AND off the ground
+			}
 
-					//do attack 2, reset attacktimecounter to attack2Time
-					attackTimeCounter = attack2Time;
-					anim.SetBool ("Attack_2", true);
-
-					float attack_step_distance = 0.1f;
-					//Move a bit towards direction we're facing
-					transform.Translate(new Vector3(lastMove.x*(attack_step_distance), 0f, 0f));
-				}
-				else
-                	attackTimeCounter -= Time.deltaTime;
-
-				if (isJumping) {
-					Movement ();
-				}
-             }
-             else
-             {
-                 isAttacking = false;
-                 anim.SetBool("Attack_1", false);
+			float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
+			if (normTime > 1f) {
+				//if we finished the current animation...
+				anim.SetBool ("Attack_1", false);
 				anim.SetBool ("Attack_2", false);
+				anim.SetBool ("Attack_3", false);
 				anim.SetBool ("Aerial_Attack", false);
-             }
+
+				isAttacking = false;
+			} 
+			else {
+				//still in middle of animation
+				if (anim.GetBool("Attack_1") && !anim.GetBool("Attack_2") && normTime > 0.4f) {
+					//last 60% of animation is window to continue to Attack_2
+					if (Input.GetKeyDown (KeyCode.J)) {
+						anim.SetBool ("Attack_2", true);//go do Attack_2
+						//anim.SetBool ("Attack_1", false);//update
+					}
+				}
+				else if (anim.GetBool("Attack_2") && !anim.GetBool("Attack_3") && normTime > 0.4f) {
+					//last 60% of animation is window to continue to Attack_3
+					if (Input.GetKeyDown (KeyCode.J)) {
+						anim.SetBool ("Attack_3", true);//go do Attack_3
+						//anim.SetBool ("Attack_2", false);//update
+					}
+				}
+			}
          }
 		//If we aren't attacking or rolling or getting knocked back, we can move
 		else
@@ -400,12 +413,12 @@ public class WASDPlayerController : MonoBehaviour {
         {
 			if (isJumping) {
 				//do aerial attack
-				attackTimeCounter = aerialAttackTime;
+//				attackTimeCounter = aerialAttackTime;
 				anim.SetBool ("Aerial_Attack", true);
 			} 
 			else {
 				//do grounded attack
-				attackTimeCounter = attack1Time;//first attack
+//				attackTimeCounter = attack1Time;//first attack
 				anim.SetBool ("Attack_1", true);
 
 //				float attack_step_distance = 0.1f;
@@ -429,7 +442,7 @@ public class WASDPlayerController : MonoBehaviour {
 		}
 
 		//Roll(set as K)
-		if (Input.GetKeyDown (KeyCode.K)) {
+		if (Input.GetKeyDown (KeyCode.K) && !anim.GetBool ("Aerial_Attack") && canRoll) {
 			rollTimeCounter = rollTime;
 			isRolling = true;
 			anim.SetBool ("Is_Rolling", true);
@@ -444,7 +457,9 @@ public class WASDPlayerController : MonoBehaviour {
 			}
 
 			playDashSound ();
-
+			//Start cool down timer
+			canRoll = false;
+			rollCoolDownCounter = rollCoolDown;
 		}
 
 		//Jump(set as Space)
@@ -490,13 +505,23 @@ public class WASDPlayerController : MonoBehaviour {
 		audiosource.pitch = 1f;//reset pitch to original
 		audiosource.PlayOneShot (attack2Sound, 0.5f);
 	}
+	void playAttack3_1Sound()
+	{
+		audiosource.pitch = 0.5f;
+		audiosource.PlayOneShot (attack3_1Sound, 0.5f);
+	}
+	void playAttack3_2Sound()
+	{
+		audiosource.pitch = 0.75f;
+		audiosource.PlayOneShot (attack3_2Sound, 0.25f);
+	}
 	void playDashSound(){
 		audiosource.pitch = 1f;//reset pitch to original
 		audiosource.PlayOneShot (dashSound, 0.5f);
 	}
 	void playCounterAttackSound(){
-		audiosource.pitch = 2f;
-		audiosource.PlayOneShot (counterAttackSound);
+		audiosource.pitch = 1f;
+		audiosource.PlayOneShot (counterAttackSound, 8f);
 
 	}
 	void playCounterStanceSound(){
