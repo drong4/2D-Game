@@ -1,0 +1,790 @@
+fileFormatVersion: 2
+guid: 94d2d829f1f14458ab9bf1ada3bfbf64
+timeCreated: 1497312123
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: giant_with_jump_0
+    21300002: giant_with_jump_1
+    21300004: giant_with_jump_2
+    21300006: giant_with_jump_3
+    21300008: giant_with_jump_4
+    21300010: giant_with_jump_5
+    21300012: giant_with_jump_6
+    21300014: giant_with_jump_7
+    21300016: giant_with_jump_8
+    21300018: giant_with_jump_9
+    21300020: giant_with_jump_10
+    21300022: giant_with_jump_11
+    21300024: giant_with_jump_12
+    21300026: giant_with_jump_13
+    21300028: giant_with_jump_14
+    21300030: giant_with_jump_15
+    21300032: giant_with_jump_16
+    21300034: giant_with_jump_17
+    21300036: giant_with_jump_18
+    21300038: giant_with_jump_19
+    21300040: giant_with_jump_20
+    21300042: giant_with_jump_21
+    21300044: giant_with_jump_22
+    21300046: giant_with_jump_23
+    21300048: giant_with_jump_24
+    21300050: giant_with_jump_25
+    21300052: giant_with_jump_26
+    21300054: giant_with_jump_27
+    21300056: giant_with_jump_28
+    21300058: giant_with_jump_29
+    21300060: giant_with_jump_30
+    21300062: giant_with_jump_31
+    21300064: giant_with_jump_32
+    21300066: giant_with_jump_33
+    21300068: giant_with_jump_34
+    21300070: giant_with_jump_35
+    21300072: giant_with_jump_36
+    21300074: giant_with_jump_37
+    21300076: giant_with_jump_38
+    21300078: giant_with_jump_39
+    21300080: giant_with_jump_40
+    21300082: giant_with_jump_41
+    21300084: giant_with_jump_42
+    21300086: giant_with_jump_43
+    21300088: giant_with_jump_44
+    21300090: giant_with_jump_45
+    21300092: giant_with_jump_46
+    21300094: giant_with_jump_47
+    21300096: giant_with_jump_48
+    21300098: giant_with_jump_49
+    21300100: giant_with_jump_50
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 64
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: giant_with_jump_0
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 428
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 430
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_2
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 428
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_3
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 417
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_4
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 425
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 422
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_6
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 425
+        width: 6
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 419
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_8
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_9
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_10
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_11
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_12
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_13
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 398
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_14
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 334
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_15
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 334
+        width: 21
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_16
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 334
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_17
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 334
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_18
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 334
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_19
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 334
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_20
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 270
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_21
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 270
+        width: 19
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_22
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 270
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_23
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 270
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_24
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 270
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_25
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 270
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_26
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 206
+        width: 17
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_27
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 206
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_28
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 206
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_29
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 206
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_30
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 206
+        width: 24
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_31
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 206
+        width: 18
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_32
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 140
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_33
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 141
+        width: 41
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_34
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 142
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_35
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 146
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_36
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 142
+        width: 39
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_37
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 142
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_38
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 142
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_39
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 78
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_40
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 78
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_41
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 78
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_42
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 78
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_43
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 78
+        width: 16
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5000019, y: 0.5913642}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_44
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 83
+        width: 14
+        height: 28
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41434506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_45
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 17
+        width: 19
+        height: 27
+      alignment: 9
+      pivot: {x: 0.52524555, y: 0.32234558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_46
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 21
+        width: 22
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.34011087}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_47
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 12
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_48
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 14
+        width: 29
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.6142053}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_49
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 14
+        width: 31
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.66683954}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: giant_with_jump_50
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 14
+        width: 16
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -52,6 +52,8 @@
      <Compile Include="Assets\EZ Camera Shake\Demo\Sample Scripts\ShakeOnTrigger.cs" />
      <Compile Include="Assets\EZ Camera Shake\Demo\ShakeDemo.cs" />
      <Compile Include="Assets\EnemyInformation.cs" />
+     <Compile Include="Assets\GiantEnemyController.cs" />
+     <Compile Include="Assets\ProximityTextGenerator.cs" />
      <Compile Include="Assets\Scripts\BackgroundMusicManager.cs" />
      <Compile Include="Assets\Scripts\BossAlert.cs" />
      <Compile Include="Assets\Scripts\BossHealthDisplay.cs" />

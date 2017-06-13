@@ -8,13 +8,18 @@ public class HealthManager : MonoBehaviour {
 	public int maxHealth;
 	public int currentHealth;
 	public GameObject damageFX;//particles produced when damaged
+	//HUD variables
+	public Slider healthSlider;
+	private bool isFullHp;
+
+	public bool getIsFullHp(){
+		return isFullHp;
+	}
 
 	[Space]
 
 	[Header("Player only variables")]
 //--ONLY FOR PLAYER---------------------------------------------------------
-	//HUD variables
-	public Slider healthSlider;
 	//damage visual
 	public Image damageScreen;
 	Color damagedColor = new Color(0f, 0f, 0f, 0.5f);//don't alter r,g,b
@@ -43,10 +48,13 @@ public class HealthManager : MonoBehaviour {
 	void Start () {
 		currentHealth = maxHealth;
 		currNumHeals = maxNumHeals;
+		isFullHp = true;
 
 		//HUD initialization
-		healthSlider.maxValue = maxHealth;
-		healthSlider.value = maxHealth;
+		if (healthSlider != null) {
+			healthSlider.maxValue = maxHealth;
+			healthSlider.value = maxHealth;
+		}
 
 		//if this is a player...
 		if (transform.tag == "Player") {
@@ -72,7 +80,9 @@ public class HealthManager : MonoBehaviour {
 		}
 
 		//HUD 
-		healthSlider.value = currentHealth;
+		if (healthSlider != null) {
+			healthSlider.value = currentHealth;
+		}
 
 		if (transform.tag == "Player") {
 			//Slowly go back to clear screen if damaged 
@@ -109,6 +119,9 @@ public class HealthManager : MonoBehaviour {
 //			//will give enemy flinch
 //			this.GetComponent<EnemyController> ().setKnockBack (true);
 //		}
+		if (isFullHp) {
+			isFullHp = false;//no longer full hp
+		}
 		currentHealth -= damageReceived;
 		GameObject generatedFX = Instantiate (damageFX, transform.position, transform.rotation);//blood particles
 		Destroy (generatedFX, generatedFX.GetComponent<ParticleSystem> ().duration);//destroy blood particles after some time

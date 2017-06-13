@@ -300,6 +300,10 @@ public class WASDPlayerController : MonoBehaviour {
 				}
 				else
                 	attackTimeCounter -= Time.deltaTime;
+
+				if (isJumping) {
+					Movement ();
+				}
              }
              else
              {
@@ -402,12 +406,11 @@ public class WASDPlayerController : MonoBehaviour {
 			else {
 				//do grounded attack
 				attackTimeCounter = attack1Time;//first attack
-				myRigidBody.velocity = Vector2.zero;//stop players movement while attacking if on ground
 				anim.SetBool ("Attack_1", true);
 
-				float attack_step_distance = 0.1f;
-				//Move a bit towards direction we're facing
-				transform.Translate (new Vector3 (lastMove.x * (attack_step_distance), 0f, 0f));
+//				float attack_step_distance = 0.1f;
+//				//Move a bit towards direction we're facing
+//				transform.Translate (new Vector3 (lastMove.x * (attack_step_distance), 0f, 0f));
 			}
 
 			isAttacking = true;

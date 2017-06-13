@@ -91,8 +91,6 @@ public class WhipEnemyController : MonoBehaviour {
 					//check if we should attack this frame
 					if (canAttack) {
 						isAttacking = true;
-						//stop moving
-						myRigidBody.velocity = Vector2.zero;
 
 						//decide whether to do attack 1, 2, or (1,2)
 						int attackNum = Random.Range (1, 4);//return 1-3
@@ -151,10 +149,10 @@ public class WhipEnemyController : MonoBehaviour {
 
 	//Handles audio
 	void playAttack1Sound(){
-		audiosource.PlayOneShot (attack1Sound);
+		audiosource.PlayOneShot (attack1Sound, 0.25f);
 	}
 	void playAttack2Sound(){
-		audiosource.PlayOneShot (attack2Sound);
+		audiosource.PlayOneShot (attack2Sound, 0.25f);
 	}
 
 }

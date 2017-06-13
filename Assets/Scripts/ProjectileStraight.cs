@@ -35,7 +35,7 @@ public class ProjectileStraight : MonoBehaviour {
 		}
 		
 		if (other.tag == "Ground") {
-			//Hit terrain
+			//Hit ground/wall
 			Destroy (gameObject);
 		}
 	}
