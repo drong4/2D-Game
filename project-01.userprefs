@@ -1,17 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WeaponAttack.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WASDPlayerController.cs">
     <Files>
-      <File FileName="Assets/Scripts/WASDPlayerController.cs" Line="262" Column="10" />
-      <File FileName="Assets/Scripts/CameraController.cs" Line="61" Column="3" />
-      <File FileName="Assets/Scripts/WeaponAttack.cs" Line="55" Column="55" />
-      <File FileName="Assets/Scripts/HealthManager.cs" Line="92" Column="2" />
-      <File FileName="Assets/Scripts/WhipEnemyController.cs" Line="126" Column="42" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="144" Column="43" />
+      <File FileName="Assets/GiantEnemyController.cs" Line="116" Column="1" />
+      <File FileName="Assets/Scripts/WhipEnemyController.cs" Line="93" Column="26" />
+      <File FileName="Assets/Scripts/WASDPlayerController.cs" Line="305" Column="18" />
+      <File FileName="Assets/Scripts/WeaponAttack.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/HealthManager.cs" Line="57" Column="4" />
       <File FileName="Assets/EnemyInformation.cs" Line="11" Column="89" />
-      <File FileName="Assets/AlertRangeController.cs" Line="18" Column="20" />
-      <File FileName="Assets/Scripts/ProjectileStraight.cs" Line="38" Column="17" />
+      <File FileName="Assets/AlertRangeController.cs" Line="41" Column="22" />
       <File FileName="Assets/Scripts/BossAlert.cs" Line="27" Column="58" />
+      <File FileName="Assets/ProximityTextGenerator.cs" Line="28" Column="4" />
+      <File FileName="Assets/Scripts/BossHealthDisplay.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/ProjectileStraight.cs" Line="38" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

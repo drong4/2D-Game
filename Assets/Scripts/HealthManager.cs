@@ -86,7 +86,7 @@ public class HealthManager : MonoBehaviour {
 
 		if (transform.tag == "Player") {
 			//Slowly go back to clear screen if damaged 
-			damageScreen.color = Color.Lerp (damageScreen.color, Color.clear, smoothColor * Time.deltaTime);
+			damageScreen.color = Color.Lerp (damageScreen.color, Color.clear, smoothColor * Time.deltaTime * Time.deltaTime * 10f );
 
 			if (Input.GetKeyDown (KeyCode.LeftShift) && currNumHeals > 0) {
 				currentHealth += healAmount;
