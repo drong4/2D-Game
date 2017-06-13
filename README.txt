@@ -2,6 +2,14 @@
 2D-Sidescroller Fighting Game
 Personal project that I started over my Spring break of 2017.
 
+Controls: 
+  Move: WASD
+  Attack: J
+  Dash: K
+  Shoot: L
+  Counter: S+K
+  Jump : Space
+
 Short gameplay demo: https://www.youtube.com/watch?v=m6isjl7PGVM
   -Minor enemies in the beginning
   -"Boss" at the end
