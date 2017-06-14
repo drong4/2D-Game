@@ -104,7 +104,8 @@ public class EnemyController : MonoBehaviour {
 		}
 		else{
 			//If something with a "Player" tag is within our AlertRange...
-			if (this.GetComponent<EnemyInformation> ().isAlerted) {
+			if (this.GetComponent<EnemyInformation> ().isAlerted && 
+				this.GetComponent<EnemyInformation> ().trackingTarget != null) {
 				//calculate dist from trackingTarget
 				targetPosition = GetComponent<EnemyInformation> ().trackingTarget.transform.position;
 				ourPosition = transform.position;

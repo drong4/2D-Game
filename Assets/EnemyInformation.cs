@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyInformation : MonoBehaviour {
 	
 	public bool isAlerted;
-	public Collider2D trackingTarget;//track them by their collider
+	public GameObject trackingTarget;//track 
 	public float timeToPassive;//amount of time before growing passive again, (a value of -1 means never goes passive)
 	public float counter;
 
@@ -41,7 +41,7 @@ public class EnemyInformation : MonoBehaviour {
 		isAlerted = val;
 	}
 
-	public void setTrackingTarget(Collider2D other){
+	public void setTrackingTarget(GameObject other){
 		trackingTarget = other;
 	}
 }

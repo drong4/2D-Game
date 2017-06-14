@@ -36,13 +36,17 @@ public class AlertRangeController : MonoBehaviour {
 				} else {
 					isAggro = true;
 				}
-			} 
-			else {
+			} else {
 				//notify this object to chase after the player
 				this.GetComponentInParent<EnemyInformation> ().setIsAlerted (true);
-				this.GetComponentInParent<EnemyInformation> ().setTrackingTarget (other);
+				this.GetComponentInParent<EnemyInformation> ().setTrackingTarget (other.gameObject);
 				this.GetComponentInParent<EnemyInformation> ().setCounter ();
 			}
+		} 
+
+		if (other.tag == "PlayerProjectile") {
+			//came in contact with a projectile fired by player
+			isAggro = true;//EVEN IF isPassiveUntilHit was true, since projectiles disturb
 		}
 	}
 }

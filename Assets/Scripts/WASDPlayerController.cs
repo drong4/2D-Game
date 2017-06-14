@@ -315,6 +315,9 @@ public class WASDPlayerController : MonoBehaviour {
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_2", true);//go do Attack_2
 						//anim.SetBool ("Attack_1", false);//update
+
+						//Move a bit towards direction we're facing
+						transform.Translate (new Vector3 (lastMove.x * (0.1f), 0f, 0f));
 					}
 				}
 				else if (anim.GetBool("Attack_2") && !anim.GetBool("Attack_3") && normTime > 0.4f) {
@@ -322,6 +325,9 @@ public class WASDPlayerController : MonoBehaviour {
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_3", true);//go do Attack_3
 						//anim.SetBool ("Attack_2", false);//update
+
+						//Move a bit towards direction we're facing
+						transform.Translate (new Vector3 (lastMove.x * (0.2f), 0f, 0f));
 					}
 				}
 			}
@@ -421,9 +427,8 @@ public class WASDPlayerController : MonoBehaviour {
 //				attackTimeCounter = attack1Time;//first attack
 				anim.SetBool ("Attack_1", true);
 
-//				float attack_step_distance = 0.1f;
-//				//Move a bit towards direction we're facing
-//				transform.Translate (new Vector3 (lastMove.x * (attack_step_distance), 0f, 0f));
+				//Move a bit towards direction we're facing
+				transform.Translate (new Vector3 (lastMove.x * (0.1f), 0f, 0f));
 			}
 
 			isAttacking = true;
@@ -431,9 +436,9 @@ public class WASDPlayerController : MonoBehaviour {
 
 		//Shoot
 		if (Input.GetKeyDown (KeyCode.L) && canFire) {
-			var obj = Instantiate (projectile, firingPoint.position, firingPoint.rotation);
+			var arrow = Instantiate (projectile, firingPoint.position, firingPoint.rotation);
 			//orient the projectile towards the direction player is facing
-			obj.transform.localScale = transform.localScale;
+			arrow.transform.localScale = transform.localScale;
 
 			playFiringSound ();
 

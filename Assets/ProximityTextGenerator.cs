@@ -19,20 +19,15 @@ public class ProximityTextGenerator : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if (other.tag == "Player" && other.name == "Hitbox") {
-			//Player either entered, or left
-			//if on, turn off. if off, turn on
-			if (textToGenerate.GetComponent<Text> () == null) {
-				Debug.Log("yo");
-			}
-			textToGenerate.GetComponent<Text> ().enabled = !textToGenerate.GetComponent<Text>().enabled;
+			//Player just entered range
+			textToGenerate.GetComponent<Text> ().enabled = true;
 		}
 	}
 
 	void OnTriggerExit2D(Collider2D other){
 		if (other.tag == "Player" && other.name == "Hitbox") {
-			//Player either entered, or left
-			//if on, turn off. if off, turn on
-			textToGenerate.GetComponent<Text> ().enabled = !textToGenerate.GetComponent<Text>().enabled;
+			//Player just left range
+			textToGenerate.GetComponent<Text> ().enabled = false;
 		}
 	}
 }

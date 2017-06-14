@@ -23,6 +23,7 @@ public class ProjectileStraight : MonoBehaviour {
 	void Update () {
 		aliveTimeCounter -= Time.deltaTime;
 		if (aliveTimeCounter < 0) {
+			//Been out for too long
 			Destroy (gameObject);
 		}
 	}
@@ -31,13 +32,17 @@ public class ProjectileStraight : MonoBehaviour {
 		if (other.tag == targetTag && other.name == "Hitbox") {
 			//Hit target!
 			other.gameObject.GetComponentInParent<HealthManager> ().ReceiveDamage (damage);
-			Destroy (gameObject);
+
+			//Don't destroy the projectile (piercing projectile)
+
 		}
 		
 		if (other.tag == "Ground") {
 			//Hit ground/wall
-			Destroy (gameObject);
+			Destroy (gameObject);//destroy the projectile 
 		}
+
+
 	}
 
 	void playCollisionSound(){

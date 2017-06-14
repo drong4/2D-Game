@@ -74,7 +74,8 @@ public class WhipEnemyController : MonoBehaviour {
 			}
 		}
 		else{
-			if (this.GetComponent<EnemyInformation> ().isAlerted) {
+			if (this.GetComponent<EnemyInformation> ().isAlerted && 
+				this.GetComponent<EnemyInformation> ().trackingTarget != null) {
 				//calculate dist from trackingTarget
 				targetPosition = this.GetComponent<EnemyInformation> ().trackingTarget.transform.position;
 				ourPosition = transform.position;
