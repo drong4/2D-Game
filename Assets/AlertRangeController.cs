@@ -47,6 +47,13 @@ public class AlertRangeController : MonoBehaviour {
 		if (other.tag == "PlayerProjectile") {
 			//came in contact with a projectile fired by player
 			isAggro = true;//EVEN IF isPassiveUntilHit was true, since projectiles disturb
+
+			//Move the AlertRange collider SLIGHTLY...
+			/*Do this bit to ensure the AlertRange collider will "collide" and register with the Player
+			 * This will fix the problem of isPassiveUntilHit enemies not waking up when player is in range
+			 * and shooting while standing still*/
+			this.transform.position = new Vector2(transform.position.x + 0.001f, transform.position.y);
+			this.transform.position = new Vector2(transform.position.x - 0.001f, transform.position.y);
 		}
 	}
 }
