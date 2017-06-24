@@ -28,18 +28,9 @@ public class EnemyController : MonoBehaviour {
 	public LayerMask groundLayer;
 	public Transform groundCheck;
 
-	//variables for knockback animation
-	private bool isKnockedBack;//lets the object that hit us set this
-	public float knockbackTime;
-	private float knockbackTimeCounter;
-	private float flinchX;//-1 if we need to flinch left, 1 if right
-	public void setFlinchX(float val){
-		flinchX = val;
-	}
-	public void	setKnockBack(bool val){
-		//lets other classes set isKnockedback
-		isKnockedBack = val;
-	}
+	[Space]
+
+	private EnemyInformation enemyInfo;
 
 	//variables for animation
 	private bool isMoving;
@@ -55,10 +46,7 @@ public class EnemyController : MonoBehaviour {
 
 		isGrounded = false;
 		isAttacking = false;
-		isKnockedBack = false;
-		//isAlerted = false;
-
-		knockbackTimeCounter = -1;
+		enemyInfo = GetComponent<EnemyInformation> ();
 	}
 	
 	// Update is called once per frame
@@ -68,27 +56,19 @@ public class EnemyController : MonoBehaviour {
 		//Check if we're in contact with ground.
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
 
-		if (isKnockedBack) {
-			if (knockbackTimeCounter == -1) {
-				//				Debug.Log ("Entered flinch block");
-				anim.SetBool ("Is_Knocked_Back", true);
-				knockbackTimeCounter = knockbackTime;
-				anim.SetFloat ("Flinch_X", flinchX);
+		if (enemyInfo.getIsKnockedback()) {
+			if (!anim.GetBool ("Is_Flinched")) {
+				anim.SetBool ("Is_Flinched", true);
+			} 
+			else {
+				float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
+				if (normTime > 1f && anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Flinch")) {
+					//Finished the flinching animation
+					//set anim variable to false
+					anim.SetBool ("Is_Flinched", false);
+					enemyInfo.setIsKnockedBack(false);
+				} 
 			}
-
-			//			Debug.Log ("knockBackCounter: " + knockbackTimeCounter.ToString ());
-			if (knockbackTimeCounter > 0f) {
-				knockbackTimeCounter -= Time.deltaTime;
-			} else {
-				isKnockedBack = false;
-				myRigidBody.velocity = Vector2.zero;
-				knockbackTimeCounter = -1f;
-
-				//set anim variable to false
-				anim.SetBool ("Is_Knocked_Back", false);
-			}
-			return;
-
 		}
 		else if (isAttacking) {
 			//attack lag
@@ -104,10 +84,10 @@ public class EnemyController : MonoBehaviour {
 		}
 		else{
 			//If something with a "Player" tag is within our AlertRange...
-			if (this.GetComponent<EnemyInformation> ().isAlerted && 
-				this.GetComponent<EnemyInformation> ().trackingTarget != null) {
+			if (this.enemyInfo.isAlerted && 
+				this.enemyInfo.trackingTarget != null) {
 				//calculate dist from trackingTarget
-				targetPosition = GetComponent<EnemyInformation> ().trackingTarget.transform.position;
+				targetPosition = this.enemyInfo.trackingTarget.transform.position;
 				ourPosition = transform.position;
 
 				xDist = targetPosition.x - ourPosition.x;//(-) if we need to go left, (+) if we need to go right

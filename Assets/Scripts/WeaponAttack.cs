@@ -53,8 +53,19 @@ public class WeaponAttack : MonoBehaviour {
 
 			if (targetObject.tag == "Player") {
 				if (targetObject.GetComponentInParent<WASDPlayerController>().isInvulnerable ||
-				    targetObject.GetComponentInParent<WASDPlayerController> ().getValidCounterStatus ()) {
-					return; //Don't apply knockback
+					targetObject.GetComponentInParent<WASDPlayerController> ().getValidCounterStatus ()) {
+					return; //Don't apply knockback or flinch
+				}
+			}
+
+			/*Check to see if this attack has enough knockback to flinch them.
+			 Compare knockback to the mass of the targetObject to determine if they should flinch*/
+			if (knockbackAmount >= targetObject.GetComponentInParent<Rigidbody2D> ().mass) {
+				if (targetObject.tag == "Player") {
+					targetObject.GetComponentInParent<WASDPlayerController> ().setKnockBack (true);
+				}
+				if (targetObject.tag == "Enemy") {
+					targetObject.GetComponentInParent<EnemyInformation> ().setIsKnockedBack (true);
 				}
 			}
 
@@ -65,15 +76,5 @@ public class WeaponAttack : MonoBehaviour {
 				                     yForce * knockbackAmount / rigidForForce.mass); 
 			rigidForForce.velocity = newVelocity;
 		}
-
-//		if (transform.parent.transform.parent.tag == "Player") {
-//			//If we are a player and we hit our target, shake the screen
-
-			/*ShakeOnce(magnitude, roughness, fadein time, fadeout time)
-			magnitude= intensity
-			roughness= lower is smooth, slow ; higher is rough, fast*/
-
-			//CameraShaker.Instance.ShakeOnce(knockbackAmount*2, knockbackAmount, 0, 0.1f);
-//		}
 	}
 }

@@ -107,17 +107,19 @@ public class WASDPlayerController : MonoBehaviour {
 	[Header("Knockback")]
 	//variables for knockback animation
 	private bool isKnockedBack;//lets the objects that hit us alter this
-	public float knockbackTime;
-	private float knockbackTimeCounter;
-	private float flinchX;//-1 if we need to flinch left, 1 if right
-	public void setFlinchX(float val){
-		flinchX = val;
-	}
 
 	public void	setKnockBack(bool val){
+		/*make sure all the other states are set to false
+		(in case we got hit in the middle of something)*/
+		turnOffAllAnimations ();
+
+		isAttacking = false;
+		isRolling = false;
+		isCountering = false;
+
 		//lets other classes set isKnockedback
 		isKnockedBack = val;
-//		Debug.Log ("WASDPlayerController's isKnockedBack set to " + val.ToString());
+		anim.SetBool ("Is_Flinched", true);
 	}
 
 	[Space]
@@ -159,8 +161,6 @@ public class WASDPlayerController : MonoBehaviour {
 		canFire = true;
 		canRoll = true;
 
-		knockbackTimeCounter = -1;
-
 		//start off facing right
 		lastMove = new Vector2(1f, 0f);
 
@@ -177,7 +177,7 @@ public class WASDPlayerController : MonoBehaviour {
     }
 		
 	
-	// FixedUpdate is called after certain amount of time, while Update is called once per frame (variable time)
+	// FixedUpdate is called once after certain amount of time, while Update is called once per frame (variable time)
 	void Update () {
 
 		//Keep camera on player
@@ -220,29 +220,15 @@ public class WASDPlayerController : MonoBehaviour {
 			}
 		}
 
-//		Debug.Log ("isKnockedBack: " + isKnockedBack.ToString ());
 
 		if (isKnockedBack) {
-			if (knockbackTimeCounter == -1) {
-//				Debug.Log ("Entered flinch block");
-				anim.SetBool ("Is_Knocked_Back", true);
-				knockbackTimeCounter = knockbackTime;
-				anim.SetFloat ("Flinch_X", flinchX);
-			}
-
-//			Debug.Log ("knockBackCounter: " + knockbackTimeCounter.ToString ());
-			if (knockbackTimeCounter > 0f) {
-				knockbackTimeCounter -= Time.deltaTime;
-			} else {
-				isKnockedBack = false;
-				myRigidBody.velocity = Vector2.zero;
-				knockbackTimeCounter = -1f;
-
+			float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
+			if (normTime > 1f && anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Flinch")) {
+				//Finished the flinching animation
 				//set anim variable to false
-				anim.SetBool ("Is_Knocked_Back", false);
-			}
-			return;
-
+				anim.SetBool ("Is_Flinched", false);
+				isKnockedBack = false;
+			} 
 		}
 		//Countering
 		else if (isCountering) {
@@ -299,7 +285,10 @@ public class WASDPlayerController : MonoBehaviour {
 			}
 
 			float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
-			if (normTime > 1f) {
+			if (normTime > 1f && (anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_1")
+				|| anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_2")
+				|| anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_3")
+				|| anim.GetCurrentAnimatorStateInfo(0).IsName("Jump.Aerial Attack"))) {
 				//if we finished the current animation...
 				anim.SetBool ("Attack_1", false);
 				anim.SetBool ("Attack_2", false);
@@ -335,15 +324,6 @@ public class WASDPlayerController : MonoBehaviour {
 		//If we aren't attacking or rolling or getting knocked back, we can move
 		else
 			Movement();
-	
-
-        //Update walkZone boundaries
-        if (walkZone != null)
-        {
-            minWalkPoint = walkZone.bounds.min;
-            maxWalkPoint = walkZone.bounds.max;
-            hasWalkZone = true;
-        }
 
         Animation();
     }
@@ -354,64 +334,50 @@ public class WASDPlayerController : MonoBehaviour {
         //Up
         if (Input.GetKey(KeyCode.W))
         {
-			if (!hasWalkZone || (hasWalkZone && transform.position.y <= maxWalkPoint.y))
-            {
-                
-			}
+
         }
         //Left
         if (Input.GetKey(KeyCode.A))
         {
+            transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0f, 0f));
+            playerIsMoving = true;
 
-			if (!hasWalkZone || (hasWalkZone && transform.position.x >= minWalkPoint.x))
-            {
-                transform.Translate(new Vector3(-moveSpeed * Time.deltaTime, 0f, 0f));
-//                isMovingLeft = true;
-                playerIsMoving = true;
+			//turn around if facing right
+			Vector3 newScale = transform.localScale;
+			if (newScale.x > 0) {
+				newScale.x = -Mathf.Abs(newScale.x);
+				transform.localScale = newScale;
+			}
 
-				//turn around if facing right
-				Vector3 newScale = transform.localScale;
-				if (newScale.x > 0) {
-					newScale.x = -Mathf.Abs(newScale.x);
-					transform.localScale = newScale;
-				}
-
-                lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
-            }
+            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+        
         }
         //Down
         if (Input.GetKey(KeyCode.S))
         {
-			if (!hasWalkZone || (hasWalkZone && transform.position.y >= minWalkPoint.y))
-            {
-				if (Input.GetKey (KeyCode.K)) {
-					//perform counter if Down + Roll
-					isCountering = true;
-					anim.SetBool ("Is_Countering", true);
-					counterTimeCounterMax = counterTime;
-					counterTimeCounter = counterTime;
-					return;//don't do anything else
-				}
-            }
+			if (Input.GetKey (KeyCode.K)) {
+				//perform counter if Down + Roll
+				isCountering = true;
+				anim.SetBool ("Is_Countering", true);
+				counterTimeCounterMax = counterTime;
+				counterTimeCounter = counterTime;
+				return;//don't do anything else
+			}
         }
         //Right
         if (Input.GetKey(KeyCode.D))
         {
-			if (!hasWalkZone || (hasWalkZone && transform.position.x <= maxWalkPoint.x)){
-                transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0f, 0f));
-//                isMovingRight = true;
-                playerIsMoving = true;
+            transform.Translate(new Vector3(moveSpeed * Time.deltaTime, 0f, 0f));
+            playerIsMoving = true;
 
-				//turn around if facing leftP
-				Vector3 newScale = transform.localScale;
-				if (newScale.x < 0) {
-					newScale.x = Mathf.Abs(newScale.x);
-					transform.localScale = newScale;
-				}
+			//turn around if facing leftP
+			Vector3 newScale = transform.localScale;
+			if (newScale.x < 0) {
+				newScale.x = Mathf.Abs(newScale.x);
+				transform.localScale = newScale;
+			}
 
-                lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
-
-            }
+            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         }
 
         //Attack(set as J)
@@ -419,12 +385,10 @@ public class WASDPlayerController : MonoBehaviour {
         {
 			if (isJumping) {
 				//do aerial attack
-//				attackTimeCounter = aerialAttackTime;
 				anim.SetBool ("Aerial_Attack", true);
 			} 
 			else {
 				//do grounded attack
-//				attackTimeCounter = attack1Time;//first attack
 				anim.SetBool ("Attack_1", true);
 
 				//Move a bit towards direction we're facing
@@ -497,6 +461,12 @@ public class WASDPlayerController : MonoBehaviour {
 		anim.SetBool ("Is_Jumping", isJumping);
 		anim.SetFloat ("Vertical_Speed", myRigidBody.velocity.y);
     }
+
+	void turnOffAllAnimations(){
+		foreach(AnimatorControllerParameter parameter in anim.parameters) {            
+			anim.SetBool(parameter.name, false);            
+		}
+	}
 
 	//Audio functions- Called by the Animation window, event
 	//				-Can play sound on specific frame in animation

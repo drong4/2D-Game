@@ -46,6 +46,9 @@ public class WhipEnemyController : MonoBehaviour {
 	public AudioClip attack2Sound;
 	AudioSource audiosource;
 
+	[Space]
+
+	private EnemyInformation enemyInfo;
 
 
 	// Use this for initialization
@@ -53,13 +56,28 @@ public class WhipEnemyController : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		myRigidBody = GetComponent<Rigidbody2D> ();
 		audiosource = GetComponent<AudioSource> ();
+		enemyInfo = GetComponent<EnemyInformation> ();
 
 		isAttacking = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (isAttacking) {
+		if (enemyInfo.getIsKnockedback()) {
+			if (!anim.GetBool ("Is_Flinched")) {
+				anim.SetBool ("Is_Flinched", true);
+			} 
+			else {
+				float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
+				if (normTime > 1f && anim.GetCurrentAnimatorStateInfo (0).IsName ("Base Layer.Flinch")) {
+					//Finished the flinching animation
+					//set anim variable to false
+					anim.SetBool ("Is_Flinched", false);
+					enemyInfo.setIsKnockedBack(false);
+				} 
+			}
+		}
+		else if (isAttacking) {
 			//attack lag
 			if (attackTimeCounter > 0f)
 			{
@@ -74,10 +92,10 @@ public class WhipEnemyController : MonoBehaviour {
 			}
 		}
 		else{
-			if (this.GetComponent<EnemyInformation> ().isAlerted && 
-				this.GetComponent<EnemyInformation> ().trackingTarget != null) {
+			if (this.enemyInfo.isAlerted && 
+				this.enemyInfo.trackingTarget != null) {
 				//calculate dist from trackingTarget
-				targetPosition = this.GetComponent<EnemyInformation> ().trackingTarget.transform.position;
+				targetPosition = this.enemyInfo.trackingTarget.transform.position;
 				ourPosition = transform.position;
 
 				xDist = targetPosition.x - ourPosition.x;//(-) if we need to go left, (+) if we need to go right

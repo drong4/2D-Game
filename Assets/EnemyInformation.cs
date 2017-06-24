@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyInformation : MonoBehaviour {
 	
 	public bool isAlerted;
+	private bool isKnockedBack;
 	public GameObject trackingTarget;//track 
 	public float timeToPassive;//amount of time before growing passive again, (a value of -1 means never goes passive)
 	public float counter;
@@ -14,6 +15,8 @@ public class EnemyInformation : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		isAlerted = false;
+		isKnockedBack = false;
+
 		trackingTarget = null;
 
 		counter = timeToPassive;
@@ -43,5 +46,14 @@ public class EnemyInformation : MonoBehaviour {
 
 	public void setTrackingTarget(GameObject other){
 		trackingTarget = other;
+	}
+
+	//Setter function for isKnockedBack
+	public void setIsKnockedBack(bool val){
+		isKnockedBack = val;
+	}
+	//Getter function for isKnockedBack
+	public bool getIsKnockedback(){
+		return isKnockedBack;
 	}
 }

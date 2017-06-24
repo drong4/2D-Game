@@ -46,11 +46,16 @@ public class GiantEnemyController : MonoBehaviour {
 	public AudioClip attackStompSound;
 	AudioSource audiosource;
 
+	[Space]
+
+	private EnemyInformation enemyInfo;
+
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 		myRigidBody = GetComponent<Rigidbody2D> ();
 		audiosource = GetComponent<AudioSource> ();
+		enemyInfo = GetComponent<EnemyInformation> ();
 
 		isWakingUp = false;
 		isAwake = false;
@@ -79,7 +84,8 @@ public class GiantEnemyController : MonoBehaviour {
 			}
 		}
 		else{
-			if (this.GetComponent<EnemyInformation> ().isAlerted) {
+			if (this.enemyInfo.isAlerted && 
+				this.enemyInfo.trackingTarget != null) {
 				if (!isAwake) {
 					//We received alert, but we're still asleep... Wake up!
 					isWakingUp = true;
@@ -87,7 +93,7 @@ public class GiantEnemyController : MonoBehaviour {
 				} 
 				else {
 					//calculate dist from trackingTarget
-					targetPosition = this.GetComponent<EnemyInformation> ().trackingTarget.transform.position;
+					targetPosition = this.enemyInfo.trackingTarget.transform.position;
 					ourPosition = transform.position;
 
 					xDist = targetPosition.x - ourPosition.x;//(-) if we need to go left, (+) if we need to go right

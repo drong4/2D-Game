@@ -44,9 +44,9 @@ public class AlertRangeController : MonoBehaviour {
 			}
 		} 
 
-		if (other.tag == "PlayerProjectile") {
-			//came in contact with a projectile fired by player
-			isAggro = true;//EVEN IF isPassiveUntilHit was true, since projectiles disturb
+		if (other.tag == "PlayerProjectile" && !this.GetComponentInParent<HealthManager>().getIsFullHp()) {
+			//came in contact with a projectile fired by player and we are not full hp
+			isAggro = true;//because we are hit and we know an arrow was fired by a player
 
 			//Move the AlertRange collider SLIGHTLY...
 			/*Do this bit to ensure the AlertRange collider will "collide" and register with the Player
