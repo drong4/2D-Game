@@ -12,6 +12,7 @@ public class ProjectileStraight : MonoBehaviour {
 	public AudioClip collisionSound; 
 	private Rigidbody2D myRigidBody;
 
+
 	// Use this for initialization
 	void Start () {
 		myRigidBody = GetComponent<Rigidbody2D>();

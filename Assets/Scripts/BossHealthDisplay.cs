@@ -15,34 +15,35 @@ public class BossHealthDisplay : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		bossHealthManager = boss.GetComponent<HealthManager> ();
 		audiosource = GetComponent<AudioSource> ();
 		maxVol = audiosource.volume;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (boss.GetComponent<BossAlert> ().bossIsActive && !healthSlider.gameObject.activeSelf) {
-			//If boss is active and the health display isn't enabled, enable it
-			enableBossHP ();
-			GetComponent<BackgroundMusicManager> ().setIsTriggered (true);//start background music
-
-			bossNameText.text = boss.name;
-			healthSlider.maxValue = bossHealthManager.maxHealth;
-			healthSlider.value = bossHealthManager.maxHealth;
-		} 
-		else {
-			//if boss is inactive or if health display is active
-
-			if (boss.GetComponent<BossAlert> ().bossIsActive) {
-				healthSlider.value = bossHealthManager.currentHealth;
+		if (boss != null) {
+			if (bossHealthManager == null) {
+				bossHealthManager = boss.GetComponent<HealthManager> ();
 			}
 
-			if (!boss.GetComponent<BossAlert> ().bossIsActive && healthSlider.gameObject.activeSelf) {
-				//If boss is no longer active and the health display is enabled, disable it
-				disableBossHp ();
-				GetComponent<BackgroundMusicManager> ().setIsTriggered (false);//stop background music
+			if (bossHealthManager.currentHealth > 0f && boss.GetComponent<EnemyInformation>().isAlerted) {
+				//If boss is alerted and is not dead yet
+				enableBossHP ();
+				GetComponent<BackgroundMusicManager> ().setIsTriggered (true);//start background music
+
+				bossNameText.text = boss.name;
+				healthSlider.maxValue = bossHealthManager.maxHealth;
+				healthSlider.value = bossHealthManager.maxHealth;
+			} 
+			else {
+				if (bossHealthManager.currentHealth <= 0f){
+					//If boss is no longer active and the health display is enabled, disable it
+					disableBossHp ();
+					GetComponent<BackgroundMusicManager> ().setIsTriggered (false);//stop background music
+				}
 			}
+
+			healthSlider.value = bossHealthManager.currentHealth;
 		}
 	}
 

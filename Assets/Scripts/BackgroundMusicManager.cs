@@ -37,14 +37,17 @@ public class BackgroundMusicManager : MonoBehaviour {
 	//INCOMPLETE------------------------------------
 	//Helper Function to fade into "soundtrack"
 	void MusicFadeIn(AudioClip soundtrack, float fadeTime){
-		audiosource.volume = 0f;//start off at 0 volume
+//		audiosource.volume = 0f;//start off at 0 volume
+//		audiosource.clip = soundtrack;
+//		audiosource.Play ();
+//
+//		while (audiosource.volume < origVol) {
+//			audiosource.volume +=  Time.deltaTime/fadeTime;
+//		}
+//
+		audiosource.volume = 0.25f;
 		audiosource.clip = soundtrack;
-		audiosource.Play ();
-
-		while (audiosource.volume < origVol) {
-			audiosource.volume +=  Time.deltaTime/fadeTime;
-		}
-
+		audiosource.Play();
 	}
 	//Helper Function to fade out of audio clip
 	void MusicFadeOut(float fadeTime){

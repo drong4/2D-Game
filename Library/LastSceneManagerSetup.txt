@@ -1,4 +1,10 @@
 sceneSetups:
-- path: Assets/Scenes/start.unity
+- path: Assets/Scenes/neverUnloadScene.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/Scenes/startingArea.unity
+  isLoaded: 0
+  isActive: 0
+- path: Assets/Scenes/startingArea_left.unity
+  isLoaded: 0
+  isActive: 0

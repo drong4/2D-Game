@@ -9,27 +9,23 @@ using System.Collections;
  * S+K - counter*/
 public class WASDPlayerController : MonoBehaviour {
     public float moveSpeed;
-
-	//Constrain movement to walkzone
-    public Collider2D walkZone;
-    private Vector2 minWalkPoint;
-    private Vector2 maxWalkPoint;
-    private bool hasWalkZone;
-
+	public bool canMove;
+	public void setCanMove(bool val){
+		canMove = val;
+	}
+		
 	[Header("Jumping")] 
     private bool isGrounded;
 	//Variables for jumping
 	public float jumpForce;
 	private bool isJumping;
-	float groundCheckRadius = 0.2f;
+	float groundCheckRadius = 0.01f;
 	public LayerMask groundLayer;
 	public Transform groundCheck;
 	//for double jump
 	private bool canDoubleJump;
 
 	[Space]
-
-    private bool canMove;
 
     private Animator anim;
     private Rigidbody2D myRigidBody;
@@ -130,13 +126,6 @@ public class WASDPlayerController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		float tar1X = this.transform.position.x;
-		float tar1Y = this.transform.position.y;
-		float tar1Z = this.transform.position.z;
-		Camera.main.transform.position = new Vector3 (tar1X, tar1Y, tar1Z-10f);
-
-
         anim = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
 		audiosource = GetComponent<AudioSource> ();
@@ -160,33 +149,17 @@ public class WASDPlayerController : MonoBehaviour {
 		isInvulnerable = false;
 		canFire = true;
 		canRoll = true;
+		canMove = true;
 
 		//start off facing right
 		lastMove = new Vector2(1f, 0f);
 
 		origGravityScale = myRigidBody.gravityScale;
-
-        //Update walkZone boundaries
-        if (walkZone != null)
-        {
-            minWalkPoint = walkZone.bounds.min;
-            maxWalkPoint = walkZone.bounds.max;
-            hasWalkZone = true;
-        }
-			
     }
 		
 	
 	// FixedUpdate is called once after certain amount of time, while Update is called once per frame (variable time)
 	void Update () {
-
-		//Keep camera on player
-		float tar1X = this.transform.position.x;
-		float tar1Y = this.transform.position.y;
-		float tar1Z = this.transform.position.z;
-		Vector3 desiredPos = new Vector3(tar1X, tar1Y+1, tar1Z - 10f);
-		Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, desiredPos, moveSpeed * Time.deltaTime);//Move camera
-
         playerIsMoving = false;
 
 		//Check if we can fire
@@ -299,24 +272,18 @@ public class WASDPlayerController : MonoBehaviour {
 			} 
 			else {
 				//still in middle of animation
-				if (anim.GetBool("Attack_1") && !anim.GetBool("Attack_2") && normTime > 0.4f) {
+				if (anim.GetBool("Attack_1") && !anim.GetBool("Attack_2") && 
+					(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_1") && normTime > 0.4f)) {
 					//last 60% of animation is window to continue to Attack_2
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_2", true);//go do Attack_2
-						//anim.SetBool ("Attack_1", false);//update
-
-						//Move a bit towards direction we're facing
-						transform.Translate (new Vector3 (lastMove.x * (0.1f), 0f, 0f));
 					}
 				}
-				else if (anim.GetBool("Attack_2") && !anim.GetBool("Attack_3") && normTime > 0.4f) {
+				else if (anim.GetBool("Attack_2") && !anim.GetBool("Attack_3") && 
+						(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_2") && normTime > 0.5f)) {
 					//last 60% of animation is window to continue to Attack_3
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_3", true);//go do Attack_3
-						//anim.SetBool ("Attack_2", false);//update
-
-						//Move a bit towards direction we're facing
-						transform.Translate (new Vector3 (lastMove.x * (0.2f), 0f, 0f));
 					}
 				}
 			}
@@ -331,6 +298,10 @@ public class WASDPlayerController : MonoBehaviour {
     //Handles all of the characters movements, user inputs
     void Movement()
     {
+		if (!canMove) {
+			return;
+		}
+
         //Up
         if (Input.GetKey(KeyCode.W))
         {
@@ -390,12 +361,11 @@ public class WASDPlayerController : MonoBehaviour {
 			else {
 				//do grounded attack
 				anim.SetBool ("Attack_1", true);
-
-				//Move a bit towards direction we're facing
-				transform.Translate (new Vector3 (lastMove.x * (0.1f), 0f, 0f));
 			}
 
 			isAttacking = true;
+
+			return;
         }
 
 		//Shoot
@@ -408,6 +378,8 @@ public class WASDPlayerController : MonoBehaviour {
 
 			canFire = false;
 			firingDelayCounter = firingDelay;
+
+			return;
 		}
 
 		//Roll(set as K)
@@ -429,6 +401,8 @@ public class WASDPlayerController : MonoBehaviour {
 			//Start cool down timer
 			canRoll = false;
 			rollCoolDownCounter = rollCoolDown;
+
+			return;
 		}
 
 		//Jump(set as Space)
@@ -449,6 +423,7 @@ public class WASDPlayerController : MonoBehaviour {
 				}
 				canDoubleJump = false;//we used our double jump
 			}
+			return;
 		}
     }
 
@@ -461,11 +436,17 @@ public class WASDPlayerController : MonoBehaviour {
 		anim.SetBool ("Is_Jumping", isJumping);
 		anim.SetFloat ("Vertical_Speed", myRigidBody.velocity.y);
     }
-
+		
 	void turnOffAllAnimations(){
 		foreach(AnimatorControllerParameter parameter in anim.parameters) {            
 			anim.SetBool(parameter.name, false);            
 		}
+	}
+
+	/*Move forward a little.
+	dist = distance to step forward*/
+	void stepForward(float dist){
+		myRigidBody.velocity = new Vector2 (dist * this.transform.localScale.x, myRigidBody.velocity.y);
 	}
 
 	//Audio functions- Called by the Animation window, event

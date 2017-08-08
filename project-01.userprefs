@@ -1,19 +1,19 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WASDPlayerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/WhipEnemyController.cs">
     <Files>
-      <File FileName="Assets/Scripts/WASDPlayerController.cs" Line="293" Column="38" />
-      <File FileName="Assets/Scripts/WeaponAttack.cs" Line="68" Column="85" />
+      <File FileName="Assets/Scripts/WhipEnemyController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PurpleGreatSwordEnemyController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WASDPlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/BlueSwordsmanController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Dialogue.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LoadLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/UnloadLevel.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AnyManager.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/CameraController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/WeaponAttack.cs" Line="1" Column="1" />
       <File FileName="Assets/Scripts/HealthManager.cs" Line="1" Column="1" />
-      <File FileName="Assets/GiantEnemyController.cs" Line="96" Column="37" />
-      <File FileName="Assets/Scripts/WhipEnemyController.cs" Line="98" Column="36" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="90" Column="36" />
-      <File FileName="Assets/EnemyInformation.cs" Line="52" Column="41" />
-      <File FileName="Assets/AlertRangeController.cs" Line="36" Column="4" />
-      <File FileName="Assets/Scripts/BossAlert.cs" Line="1" Column="1" />
-      <File FileName="Assets/ProximityTextGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/BossHealthDisplay.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/ProjectileStraight.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/EnemyInformation.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

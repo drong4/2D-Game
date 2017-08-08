@@ -100,25 +100,35 @@ public class HealthManager : MonoBehaviour {
 		}
 	}
 
-	public void ReceiveDamage(int damageReceived/*, Vector3 pointOfContact*/){
+	//Applies damage and returns a bool saying if damage was received
+	public bool ReceiveDamage(int damageReceived/*, Vector3 pointOfContact*/){
 		if (transform.tag == "Player") {
 			if (this.GetComponent<WASDPlayerController> ().isInvulnerable) {
 				//if this is a player and invulnerable, don't take damage
-				return;
+				return false;
 			} 
 			else if (this.GetComponent<WASDPlayerController> ().getValidCounterStatus()) {
 				//if this is a player and is countering, don't take damage
 				counterSuccess = true;
-				return;
+				return false;
 			}
 			else {
 				damageScreen.color = damagedColor;
 			}
 		}
-//		if (transform.tag == "Enemy") {
-//			//will give enemy flinch
-//			this.GetComponent<EnemyController> ().setKnockBack (true);
-//		}
+		if (transform.tag == "Enemy") {
+			EnemyInformation enemyInfo = this.GetComponent<EnemyInformation> ();
+			if (enemyInfo.getIsInvulnerable ()) {
+				//enemy is invulnerable, don't take damage
+				return false;
+			} 
+			if(enemyInfo.getIsCountering()){
+				//enemy is countering, and they just got hit, don't take damage
+				enemyInfo.setWillCounterAttack(true);
+				return false;
+			}
+		}
+
 		if (isFullHp) {
 			isFullHp = false;//no longer full hp
 		}
@@ -126,12 +136,10 @@ public class HealthManager : MonoBehaviour {
 
 		//generate blood particles
 		GameObject generatedFX;
-//		if (pointOfContact != null) {
-//			generatedFX = Instantiate (damageFX, pointOfContact, transform.rotation);//blood particles
-//		} 
-//		else {
-			generatedFX = Instantiate (damageFX, transform.position, transform.rotation);
-//		}
+
+		generatedFX = Instantiate (damageFX, transform.position, transform.rotation);
 		Destroy (generatedFX, generatedFX.GetComponent<ParticleSystem> ().duration);//destroy blood particles after some time
+
+		return true;
 	}
 }
