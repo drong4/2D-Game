@@ -57,7 +57,6 @@ public class WASDPlayerController : MonoBehaviour {
 	//Variables for rolling
 	public float rollSpeed;
 	private static  bool isRolling;
-	public float rollTime;
 	private float rollTimeCounter;
 	public float rollCoolDown;
 	private float rollCoolDownCounter;
@@ -71,8 +70,7 @@ public class WASDPlayerController : MonoBehaviour {
 	//variables for audio clips
 	public AudioClip attack1Sound;
 	public AudioClip attack2Sound;
-	public AudioClip attack3_1Sound;
-	public AudioClip attack3_2Sound;
+	public AudioClip attack3Sound;
 	public AudioClip dashSound;
 	public AudioClip counterAttackSound;
 	public AudioClip counterStanceSound;
@@ -129,17 +127,6 @@ public class WASDPlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         myRigidBody = GetComponent<Rigidbody2D>();
 		audiosource = GetComponent<AudioSource> ();
-
-//        //Deals with duplicates of the player when any scene loading happens
-//         if (!playerExists)
-//         {
-//             playerExists = true;
-//             DontDestroyOnLoad(transform.gameObject);
-//         }
-//         else
-//         {
-//             Destroy(gameObject);
-//         }
 
         isGrounded = true;
 		isJumping = false;
@@ -201,6 +188,9 @@ public class WASDPlayerController : MonoBehaviour {
 				//set anim variable to false
 				anim.SetBool ("Is_Flinched", false);
 				isKnockedBack = false;
+
+				//Because if we get flinched in the middle of dashing, gravity scale will remain 0
+				myRigidBody.gravityScale = origGravityScale;
 			} 
 		}
 		//Countering
@@ -231,24 +221,27 @@ public class WASDPlayerController : MonoBehaviour {
 		}
 		//Rolling
 		else if (isRolling) {
-			float timePassed = rollTime - rollTimeCounter;
+			float timePassed = rollTimeCounter;
 			isInvulnerable = timePassed <= rollIFrames;
 
-			if (rollTimeCounter > 0f) {
-				rollTimeCounter -= Time.deltaTime;
-
-				if (isJumping) 
-					transform.Translate (new Vector3 (lastMove.x * (rollSpeed * 1.5f) * Time.deltaTime, 0f, 0f));
-				else
-					transform.Translate (new Vector3 (lastMove.x * rollSpeed * Time.deltaTime, 0f, 0f));
-			}
-			else
-			{
+			float normTime = anim.GetCurrentAnimatorStateInfo (0).normalizedTime;//1.49 = looped animation once, 49% second time
+			if (normTime > 1f && (anim.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Grounded Dash") 
+				|| (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump.Aerial Dash")))){
+				//we're done
 				isRolling = false;
 				isInvulnerable = false; //make sure we don't have i-frames anymore
 				anim.SetBool("Is_Rolling", false);
 
 				myRigidBody.gravityScale = origGravityScale;
+			}
+			else
+			{
+				rollTimeCounter += Time.deltaTime;
+
+				if (isJumping) 
+					transform.Translate (new Vector3 (lastMove.x * (rollSpeed * 1.5f) * Time.deltaTime, 0f, 0f));
+				else
+					transform.Translate (new Vector3 (lastMove.x * rollSpeed * Time.deltaTime, 0f, 0f));
 			}
 		}
         //Attack lag
@@ -273,14 +266,14 @@ public class WASDPlayerController : MonoBehaviour {
 			else {
 				//still in middle of animation
 				if (anim.GetBool("Attack_1") && !anim.GetBool("Attack_2") && 
-					(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_1") && normTime > 0.4f)) {
+					(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_1") && normTime > 0.5f)) {
 					//last 60% of animation is window to continue to Attack_2
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_2", true);//go do Attack_2
 					}
 				}
 				else if (anim.GetBool("Attack_2") && !anim.GetBool("Attack_3") && 
-						(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_2") && normTime > 0.5f)) {
+						(anim.GetCurrentAnimatorStateInfo(0).IsName("Ground Attack.attack_2") && normTime > 0.6f)) {
 					//last 60% of animation is window to continue to Attack_3
 					if (Input.GetKeyDown (KeyCode.J)) {
 						anim.SetBool ("Attack_3", true);//go do Attack_3
@@ -372,7 +365,7 @@ public class WASDPlayerController : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.L) && canFire) {
 			var arrow = Instantiate (projectile, firingPoint.position, firingPoint.rotation);
 			//orient the projectile towards the direction player is facing
-			arrow.transform.localScale = transform.localScale;
+			arrow.transform.localScale = transform.localScale/2;
 
 			playFiringSound ();
 
@@ -384,7 +377,7 @@ public class WASDPlayerController : MonoBehaviour {
 
 		//Roll(set as K)
 		if (Input.GetKeyDown (KeyCode.K) && !anim.GetBool ("Aerial_Attack") && canRoll) {
-			rollTimeCounter = rollTime;
+			rollTimeCounter = 0f;
 			isRolling = true;
 			anim.SetBool ("Is_Rolling", true);
 
@@ -392,12 +385,11 @@ public class WASDPlayerController : MonoBehaviour {
 			isInvulnerable = true;
 
 			//If we're in the air, cancel all velocity
-			if (isJumping) {
+//			if (isJumping) {
 				myRigidBody.velocity = Vector2.zero;
 				myRigidBody.gravityScale = 0;
-			}
+//			}
 
-			playDashSound ();
 			//Start cool down timer
 			canRoll = false;
 			rollCoolDownCounter = rollCoolDown;
@@ -419,7 +411,7 @@ public class WASDPlayerController : MonoBehaviour {
 					//stop movement...
 					myRigidBody.velocity = Vector2.zero;
 					//...then add the jump force, but half
-					myRigidBody.AddForce (new Vector2 (myRigidBody.velocity.x, jumpForce/2));
+					myRigidBody.AddForce (new Vector2 (myRigidBody.velocity.x, jumpForce/1.25f));
 				}
 				canDoubleJump = false;//we used our double jump
 			}
@@ -458,18 +450,13 @@ public class WASDPlayerController : MonoBehaviour {
 	}
 	void playAttack2Sound()
 	{
-		audiosource.pitch = 1f;//reset pitch to original
+		audiosource.pitch = 1.2f;//reset pitch to original
 		audiosource.PlayOneShot (attack2Sound, 0.5f);
 	}
-	void playAttack3_1Sound()
+	void playAttack3Sound()
 	{
-		audiosource.pitch = 0.5f;
-		audiosource.PlayOneShot (attack3_1Sound, 0.5f);
-	}
-	void playAttack3_2Sound()
-	{
-		audiosource.pitch = 0.75f;
-		audiosource.PlayOneShot (attack3_2Sound, 0.25f);
+		audiosource.pitch = 1f;
+		audiosource.PlayOneShot (attack3Sound, 0.5f);
 	}
 	void playDashSound(){
 		audiosource.pitch = 1f;//reset pitch to original
